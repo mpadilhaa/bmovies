@@ -1,9 +1,11 @@
 import React from "react";
 import * as Styled from "./styles";
 import { Link } from "react-router-dom";
+import imgNoImage from "../../assets/imageError.png";
 
 const CardMovies = ({ movie, showLink = true, overview = false }) => (
   <Styled.Container>
+    {!movie.backdrop_path && <img src={imgNoImage} alt="" />}
     <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt="" />
     <h2>{movie.title}</h2>
     <h4>{movie.release_date}</h4>

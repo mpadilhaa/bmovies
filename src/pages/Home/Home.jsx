@@ -26,7 +26,7 @@ const Home = () => {
     <Styled.Container>
       <div>
         {data.map((movies) => (
-          <CardMovies movie={movies} showLink />
+          <CardMovies movie={movies} />
         ))}
       </div>
       <Outlet />

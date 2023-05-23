@@ -25,11 +25,10 @@ const Search = () => {
 
   useEffect(() => {
     searchMovies(url);
-  }, []);
+  }, [query]);
 
   return (
     <div>
-      {}
       {moviesSearch && moviesSearch.map((item) => <CardMovies movie={item} />)}
     </div>
   );
