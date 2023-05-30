@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import CardMovies from "../../components/CardMovies/CardMovies";
+import * as Styled from './styles'
 
 const Movie = () => {
   const { id } = useParams();
@@ -24,9 +25,10 @@ const Movie = () => {
   }, []);
 
   return (
-    <div>
-      {data && <CardMovies movie={data} showLink={false} overview={true} />}
-    </div>
+    <Styled.Container>
+      {data && <CardMovies movie={data} showLink={false} overview={true} widthImg="original"/>}
+     
+    </Styled.Container>
   );
 };
 

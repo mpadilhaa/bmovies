@@ -1,7 +1,7 @@
 import React from "react";
 import * as Styled from "./styles";
 import { useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
+
 
 import CardMovies from "../../components/CardMovies/CardMovies";
 import SlideHome from "../../components/SlideHome/SlideHome";
@@ -56,11 +56,11 @@ const Home = () => {
         </SlideHome>
       </Styled.Slider>
       <Styled.Categorys>
-        <RatingCards title={"Top Movies"}>
+        <RatingCards title={"Top Movies"} style={{ marginTop:"30px"}}>
           {data[0]?.results.map((movies) => (
             <SwiperSlide
               key={movies.id}
-              style={{ minWidth: "140px", maxWidth: "300px" }}
+              style={{ minWidth: "140px", maxWidth: "300px"}}
             >
               <CardMovies movie={movies} />
             </SwiperSlide>

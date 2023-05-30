@@ -12,7 +12,7 @@ import { FreeMode, Pagination } from "swiper";
 
 const RatingCards = ({ title, children }) => {
   return (
-    <>
+    <div>
       <h2>{title}</h2>
       <Swiper
         breakpoints={{
@@ -46,7 +46,7 @@ const RatingCards = ({ title, children }) => {
       >
         {children}
       </Swiper>
-    </>
+    </div>
   );
 };
 

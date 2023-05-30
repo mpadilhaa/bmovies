@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <Styled.Container>
-      <Styled.Content>
+      
         <Link to="/" style={Styled.stylesLink}>
           BestMovies
         </Link>
@@ -56,7 +56,7 @@ const Navbar = () => {
             </button>
           )}
         </form>
-      </Styled.Content>
+    
     </Styled.Container>
   );
 };

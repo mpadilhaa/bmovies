@@ -15,10 +15,11 @@ export const Slider = styled.div`
     width: 100%;
 
     h1 {
-      position: absolute;
-      top: 230px;
-      left: 100px;
+     position: absolute;
+      top:100px;
+      left: 25px;
       z-index: 999;
+      font-size: clamp(1.25rem, 0.8252rem + 1.8123vw, 3rem);
     }
   `}
 `;
@@ -44,5 +45,13 @@ export const BackGroundLinear = styled.div`
 `;
 
 export const Categorys = styled.div`
-  ${({ theme }) => css``}
+  ${({ theme }) => css`
+  margin-top:50px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+ 
+  
+  
+  `}
 `;

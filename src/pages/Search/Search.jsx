@@ -3,6 +3,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CardMovies from "../../components/CardMovies/CardMovies";
+import * as Styled from "./styles"
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -28,9 +29,11 @@ const Search = () => {
   }, [query]);
 
   return (
-    <div>
+    <Styled.Container>
+
       {moviesSearch && moviesSearch.map((item) => <CardMovies movie={item} />)}
-    </div>
+    </Styled.Container>
+    
   );
 };
 
