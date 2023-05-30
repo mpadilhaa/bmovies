@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import * as Styled from "./styles";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ImSearch } from "react-icons/im";
 
 const Navbar = () => {
   const [inputValue, setInputValue] = useState("");
+  const [showAndHiddenInput, setShowAndHiddenInput] = useState(false);
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {
@@ -18,13 +20,43 @@ const Navbar = () => {
     setInputValue("");
   }
 
+  function showInput() {
+    setShowAndHiddenInput(!showAndHiddenInput);
+  }
+
   return (
     <Styled.Container>
-      <Link to="/">BestMovies</Link>
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleInputChange} value={inputValue} />
-        <button type="submit">Procurar filme</button>
-      </form>
+      <Styled.Content>
+        <Link to="/" style={Styled.stylesLink}>
+          BestMovies
+        </Link>
+
+        <form onSubmit={handleSubmit}>
+          {showAndHiddenInput && (
+            <input
+              type="text"
+              onChange={handleInputChange}
+              value={inputValue}
+              placeholder="O que você está procurando?"
+            />
+          )}
+          {!showAndHiddenInput && (
+            <button type="text" onClick={showInput}>
+              <ImSearch />{" "}
+            </button>
+          )}
+          {showAndHiddenInput && inputValue === "" && (
+            <button type="text" onClick={showInput}>
+              <ImSearch />{" "}
+            </button>
+          )}
+          {showAndHiddenInput && inputValue && (
+            <button type="submit">
+              <ImSearch />{" "}
+            </button>
+          )}
+        </form>
+      </Styled.Content>
     </Styled.Container>
   );
 };
