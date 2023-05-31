@@ -16,25 +16,27 @@ const RatingCards = ({ title, children }) => {
       <h2>{title}</h2>
       <Swiper
         breakpoints={{
+          slidesPerView: 2,
+          spaceBetween: 10,
           320: {
             slidesPerView: 3,
             spaceBetween: 20,
           },
           480: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
-          768: {
             slidesPerView: 4,
             spaceBetween: 20,
           },
-          1024: {
+          768: {
             slidesPerView: 6,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 7,
             spaceBetween: 30,
           },
           1200: {
-            slidesPerView: 7,
-            spaceBetween: 30,
+            slidesPerView: 10,
+            spaceBetween: 10,
           },
         }}
         spaceBetween={14}

@@ -2,24 +2,22 @@ import React from "react";
 import * as Styled from "./styles";
 import { useEffect, useState } from "react";
 
-
 import CardMovies from "../../components/CardMovies/CardMovies";
 import SlideHome from "../../components/SlideHome/SlideHome";
 import RatingCards from "../../components/RatingCards/RatingCards";
 import { SwiperSlide } from "swiper/react";
+import Button from "../../components/Button/Button";
+import { API_KEY } from "../../utils/utils";
 
 const Home = () => {
   const [data, setData] = useState([]);
 
   async function apiMovies() {
-    const urlTopRated =
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=98930526aa71a154e93993723315aadd";
+    const urlTopRated = `https://api.themoviedb.org/3/movie/top_rated${API_KEY}`;
 
-    const urlMostPopular =
-      "https://api.themoviedb.org/3/movie/popular?api_key=98930526aa71a154e93993723315aadd";
+    const urlMostPopular = `https://api.themoviedb.org/3/movie/popular${API_KEY}`;
 
-    const urlNowPlaying =
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=98930526aa71a154e93993723315aadd";
+    const urlNowPlaying = `https://api.themoviedb.org/3/movie/now_playing${API_KEY}`;
 
     try {
       const urls = [urlTopRated, urlMostPopular, urlNowPlaying];
@@ -35,8 +33,6 @@ const Home = () => {
     apiMovies();
   }, []);
 
-  console.log(data);
-
   return (
     <Styled.Container>
       <Styled.Slider>
@@ -44,7 +40,12 @@ const Home = () => {
           {data[2]?.results.map((img) => (
             <SwiperSlide style={{ maxHeight: "600px" }} key={img.id}>
               <div>
-                <h1>{img.title}</h1>
+                <Styled.TextCarrousel>
+                  <h1>{img.title}</h1>
+                  <p>{img.overview}</p>
+                  <Button url={`/movie/${img.id}`}>Details</Button>
+                </Styled.TextCarrousel>
+
                 <img
                   src={`https://image.tmdb.org/t/p/original${img.backdrop_path}`}
                   alt=""
@@ -56,11 +57,11 @@ const Home = () => {
         </SlideHome>
       </Styled.Slider>
       <Styled.Categorys>
-        <RatingCards title={"Top Movies"} style={{ marginTop:"30px"}}>
+        <RatingCards title={"Top Movies"} style={{ marginTop: "30px" }}>
           {data[0]?.results.map((movies) => (
             <SwiperSlide
               key={movies.id}
-              style={{ minWidth: "140px", maxWidth: "300px"}}
+              style={{ minWidth: "140px", maxWidth: "300px" }}
             >
               <CardMovies movie={movies} />
             </SwiperSlide>

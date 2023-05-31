@@ -5,20 +5,22 @@ export const SearchContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 14px;
+    gap: 24px;
 
-    padding-top: 120px;
+    justify-content: center;
+    padding-top: 80px;
 
-    @media (max-width: 820px) {
-      gap: 30px;
+    @media (min-width: 820px) {
+      padding-top: 120px;
     }
   `}
 `;
 
 export const SearchMovies = styled.div`
   ${({ theme }) => css`
-    max-width: 375px;
-    min-width: 140px;
-    margin: 0 auto;
+    margin: 10px auto;
+    @media (max-width: 820px) {
+      margin: 30px auto;
+    }
   `}
 `;

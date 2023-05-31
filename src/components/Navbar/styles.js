@@ -28,7 +28,7 @@ export const Container = styled.div`
       border: none;
       color: ${theme.colors.light};
       position: absolute;
-      top: 40px;
+      top: 35px;
       right: 25px;
       display: flex;
       align-items: center;
@@ -40,6 +40,9 @@ export const Container = styled.div`
     }
 
     @media (min-width: 820px) {
+      button {
+        top: 40px;
+      }
       button svg {
         font-size: 30px;
       }

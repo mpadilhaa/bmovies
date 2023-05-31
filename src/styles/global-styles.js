@@ -13,6 +13,8 @@ body {
  -webkit-font-smoothing: antialiased;
  }
 
-
+a{
+  font-size: clamp(0.625rem, 0.4733rem + 0.6472vw, 1.25rem)
+}
 
 `;

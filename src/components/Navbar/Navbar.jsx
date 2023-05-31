@@ -7,6 +7,7 @@ import { ImSearch } from "react-icons/im";
 const Navbar = () => {
   const [inputValue, setInputValue] = useState("");
   const [showAndHiddenInput, setShowAndHiddenInput] = useState(false);
+
   const navigate = useNavigate();
 
   const handleInputChange = (event) => {

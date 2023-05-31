@@ -14,18 +14,12 @@ export const Slider = styled.div`
     margin: 0;
     width: 100%;
 
-    h1 {
-     position: absolute;
-      top:100px;
-      left: 25px;
-      z-index: 999;
-      font-size: clamp(1.25rem, 0.8252rem + 1.8123vw, 2.6rem);
-      max-width: 460px;
-    }
-
+  
+    
     @media (min-width: 820px){
       
       h1{
+        font-size: clamp(1.5rem, 0.8252rem + 1.8123vw, 2.6rem);
         top:200px;
       }
   `}
@@ -57,5 +51,33 @@ export const Categorys = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
+  `}
+`;
+
+export const TextCarrousel = styled.div`
+  ${({ theme }) => css`
+    position: absolute;
+    top: 130px;
+    z-index: 999;
+    left: 25px;
+    max-width: 600px;
+
+    h1 {
+      font-size: clamp(1rem, 0.6056rem + 1.6828vw, 2.625rem);
+    }
+
+    p {
+      margin-bottom: 10px;
+      font-size: clamp(0.625rem, 0.534rem + 0.3883vw, 1rem);
+      display: none;
+    }
+
+    @media (min-width: 820px) {
+      top: 200px;
+
+      p {
+        display: block;
+      }
+    }
   `}
 `;

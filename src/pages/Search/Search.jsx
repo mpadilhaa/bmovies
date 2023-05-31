@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CardMovies from "../../components/CardMovies/CardMovies";
 import * as Styled from "./styles";
+import { API_KEY } from "../../utils/utils";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -16,12 +17,11 @@ const Search = () => {
     try {
       const api = await fetch(url);
       const res = await api.json();
-      console.log(res.results);
       setMoviesSearch(res.results);
     } catch (error) {}
   }
 
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=98930526aa71a154e93993723315aadd&query=${query}
+  const url = `https://api.themoviedb.org/3/search/movie${API_KEY}&query=${query}
   `;
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Search = () => {
     <Styled.SearchContainer>
       {moviesSearch &&
         moviesSearch.map((item) => (
-          <Styled.SearchMovies>
+          <Styled.SearchMovies key={item.id}>
             <CardMovies movie={item} />
           </Styled.SearchMovies>
         ))}

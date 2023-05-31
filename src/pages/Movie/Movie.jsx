@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Button from "../../components/Button/Button";
-
+import { API_KEY } from "../../utils/utils";
 import * as Styled from "./styles";
 
 const Movie = () => {
@@ -20,7 +20,7 @@ const Movie = () => {
     }
   }
 
-  const url = `https://api.themoviedb.org/3/movie/${id}?api_key=98930526aa71a154e93993723315aadd`;
+  const url = `https://api.themoviedb.org/3/movie/${id}${API_KEY}`;
 
   useEffect(() => {
     apiMovies(url);
@@ -41,7 +41,7 @@ const Movie = () => {
             <h5>{data.release_date}</h5>
             <span>
               {data.genres.map((genre) => (
-                <small>{genre.name}</small>
+                <small key={genre.id}>{genre.name}</small>
               ))}
             </span>
             <span>

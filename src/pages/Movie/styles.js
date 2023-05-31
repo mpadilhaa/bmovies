@@ -3,9 +3,6 @@ import styled, { css } from "styled-components";
 export const MovieContainer = styled.div`
   ${({ theme }) => css`
     position: relative;
-
-    @media (min-width: 820px) {
-    }
   `}
 `;
 
@@ -54,7 +51,6 @@ export const MovieContent = styled.div`
     }
 
     div {
-      width: 100%;
       margin: 0 auto;
       margin-top: 50px;
       max-width: 450px;
@@ -62,6 +58,8 @@ export const MovieContent = styled.div`
       gap: 20px;
       align-items: center;
       flex-direction: column;
+      justify-content: center;
+      text-align: center;
     }
 
     h5 {
@@ -69,13 +67,12 @@ export const MovieContent = styled.div`
     }
 
     p {
-      padding: 20px;
-      max-width: 450px;
       font-size: clamp(0.625rem, 0.534rem + 0.3883vw, 1rem);
     }
 
     span {
       display: flex;
+      align-items: center;
       gap: 30px;
       color: ${theme.colors.pink};
       font-size: clamp(0.625rem, 0.534rem + 0.3883vw, 1rem);
@@ -98,9 +95,14 @@ export const MovieContent = styled.div`
 
       div {
         width: 50%;
-        margin: 240px 0;
+        margin: 440px 0;
+        text-align: start;
+        align-items: start;
+      }
+      h2 {
         text-align: start;
       }
+
       p {
         padding: 0;
       }
