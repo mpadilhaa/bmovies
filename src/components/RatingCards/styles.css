@@ -6,7 +6,6 @@
 .swiper-slide {
   /* Center slide text vertically */
   display: flex;
-  
 }
 
 .swiper-slide img {
@@ -15,8 +14,7 @@
   height: 100%;
   object-fit: cover;
 }
-h2{
+h2 {
   font-size: clamp(1rem, 0.6056rem + 1.6828vw, 2.625rem);
   margin: 30px 25px;
 }
-

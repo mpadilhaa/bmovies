@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Styled from "./styles";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -18,45 +18,48 @@ const Navbar = () => {
     if (!inputValue) return;
     navigate(`/search?q=${inputValue}`);
     setInputValue("");
+    setShowAndHiddenInput(false);
   }
 
   function showInput() {
     setShowAndHiddenInput(!showAndHiddenInput);
   }
 
+  useEffect(() => {
+    setShowAndHiddenInput(false);
+  }, [navigate]);
+
   return (
     <Styled.Container>
-      
-        <Link to="/" style={Styled.stylesLink}>
-          BestMovies
-        </Link>
+      <Link to="/" style={Styled.stylesLink}>
+        BestMovies
+      </Link>
 
-        <form onSubmit={handleSubmit}>
-          {showAndHiddenInput && (
-            <input
-              type="text"
-              onChange={handleInputChange}
-              value={inputValue}
-              placeholder="O que você está procurando?"
-            />
-          )}
-          {!showAndHiddenInput && (
-            <button type="text" onClick={showInput}>
-              <ImSearch />{" "}
-            </button>
-          )}
-          {showAndHiddenInput && inputValue === "" && (
-            <button type="text" onClick={showInput}>
-              <ImSearch />{" "}
-            </button>
-          )}
-          {showAndHiddenInput && inputValue && (
-            <button type="submit">
-              <ImSearch />{" "}
-            </button>
-          )}
-        </form>
-    
+      <form onSubmit={handleSubmit}>
+        {showAndHiddenInput && (
+          <input
+            type="text"
+            onChange={handleInputChange}
+            value={inputValue}
+            placeholder="O que você está procurando?"
+          />
+        )}
+        {!showAndHiddenInput && (
+          <button type="text" onClick={showInput}>
+            <ImSearch />{" "}
+          </button>
+        )}
+        {showAndHiddenInput && inputValue === "" && (
+          <button type="text" onClick={showInput}>
+            <ImSearch />{" "}
+          </button>
+        )}
+        {showAndHiddenInput && inputValue && (
+          <button type="submit">
+            <ImSearch />{" "}
+          </button>
+        )}
+      </form>
     </Styled.Container>
   );
 };

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import CardMovies from "../../components/CardMovies/CardMovies";
-import * as Styled from './styles'
+import Button from "../../components/Button/Button";
+
+import * as Styled from "./styles";
 
 const Movie = () => {
   const { id } = useParams();
@@ -12,23 +13,44 @@ const Movie = () => {
     try {
       const api = await fetch(url);
       const res = await api.json();
-      console.log(res);
+
       setData(res);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=98930526aa71a154e93993723315aadd`;
 
   useEffect(() => {
     apiMovies(url);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   return (
-    <Styled.Container>
-      {data && <CardMovies movie={data} showLink={false} overview={true} widthImg="original"/>}
-     
-    </Styled.Container>
+    <Styled.MovieContainer>
+      <Styled.BackGroundLinear />
+      {data && (
+        <Styled.MovieContent>
+          <img
+            src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+            alt=""
+          />
+          <div>
+            <h2>{data.original_title}</h2>
+            <p>{data.overview}</p>
+            <h5>{data.release_date}</h5>
+            <span>
+              {data.genres.map((genre) => (
+                <small>{genre.name}</small>
+              ))}
+            </span>
+            <span>
+              <Button url={"/"}>Voltar ao inicio</Button>
+            </span>
+          </div>
+        </Styled.MovieContent>
+      )}
+    </Styled.MovieContainer>
   );
 };
 
